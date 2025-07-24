@@ -46,7 +46,7 @@ if st.session_state.quiz_started and not st.session_state.quiz_finished:
             "answer": "50"
         },
         {
-            "questions": "Digit terakhir dari 7^2025";
+            "questions": "Digit terakhir dari 7^2025",
             "answer": "3"
         }
     ]
