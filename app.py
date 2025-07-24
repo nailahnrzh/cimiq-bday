@@ -32,12 +32,24 @@ if st.button("COC SEASON 23 DIMULAI! 🎯") and not st.session_state.found:
 st.markdown("---")       
 if st.session_state.quiz_started and not st.session_state.quiz_finished:
     st.header("COC Season 23 Deathmatch Quiz")
-    questions = {
-        "Jika x + 1/x = 3, maka nilai dari x^2 + 1/x^2 adalah": "7",
-        "2, 6, 12, 20, 30, ?": "42",
-        "A=1 B=2 ... Z= 26 Maka berapa nilai dari kata: ISMI?": "50",
-        "Digit terakhir dari 7^2025": "3"
+    questions =[
+        {
+            "questions": "Jika x + 1/x = 3, maka nilai dari x^2 + 1/x^2 adalah", 
+            "answer": "7"
+        },
+        {
+            "questions": "2, 6, 12, 20, 30, ?",
+            "answer": "42"
+        },
+        {
+            "questions": "A=1 B=2 ... Z= 26 Maka berapa nilai dari kata: ISMI?",
+            "answer": "50"
+        },
+        {
+            "questions": "Digit terakhir dari 7^2025";
+            "answer": "3"
         }
+    ]
     for idx, (q, a) in enumerate(questions.items()):
         user_answer = st.text_input(f"Q{idx+1}: {q}", key=f"q{idx}")
         if user_answer:
