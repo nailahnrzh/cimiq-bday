@@ -45,7 +45,7 @@ if st.session_state.quiz_started and not st.session_state.quiz_finished:
                 st.success("benul")
                 st.session_state.score += 1
             else:
-                st.error(f"tet tot salah myang bnul adlh: {a}")
+                st.error("tet tot salah")
     all_answered = all(st.session_state.get(f"q{idx}") for idx in range(len(questions)))
     if all_answered:
         st.session_state.quiz_finished = True
