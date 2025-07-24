@@ -1,9 +1,10 @@
 import streamlit as st
 import random
+
 st.set_page_config(page_title="🎉 Tebak Angka Ultah!", page_icon="🎂")
 st.title("🎂お誕生日おめでとうございます！ ")
 st.subheader("ゲームを始めましょう！")   
-###
+
 if 'secret_number' not in st.session_state:
     st.session_state.secret_number = 23
 if 'attempts' not in st.session_state:
@@ -16,7 +17,9 @@ if 'quiz_finished' not in st.session_state:
     st.session_state.quiz_finished = False
 if "special_done" not in st.session_state:
     st.session_state.special_done = False
+
 guess = st.number_input("Age you are turning in today: ", min_value=1, step=1)
+
 if st.button("COC SEASON 23 DIMULAI! 🎯") and not st.session_state.found:
     st.session_state.attempts += 1
     if guess < st.session_state.secret_number:
@@ -27,7 +30,9 @@ if st.button("COC SEASON 23 DIMULAI! 🎯") and not st.session_state.found:
         st.success(f"Alhamdulillah masyaAllah ismi su {st.session_state.secret_number} tahun. Ngkeh kta lanjut ke babak berikutnyh")
         st.session_state.found = True
         st.session_state.quiz_started = True
+
 st.markdown("---")       
+
 if st.session_state.quiz_started and not st.session_state.quiz_finished:
     st.header("COC Season 23 Deathmatch Quiz")
     questions = [
@@ -38,9 +43,9 @@ if st.session_state.quiz_started and not st.session_state.quiz_finished:
     ]
 
     for idx, q in enumerate(questions):
-       st.text_input(f"Q{idx+1}: {q['question']}", key=f"q{idx}")
+        st.text_input(f"Q{idx+1}: {q['question']}", key=f"q{idx}")
     
-       all_answered = all(
+    all_answered = all(
         st.session_state.get(f"q{idx}") not in [None, ""] for idx in range(len(questions))
     )
 
@@ -63,18 +68,20 @@ if st.session_state.quiz_started and not st.session_state.quiz_finished:
 if st.session_state.quiz_finished and not st.session_state.special_done:
     st.markdown("---") 
     st.header("Special Episode")
-   special_question = {
-        "question": "Bagaimana film SORE?",
+    
+    special_question = {
+        "questions": "Bagaimana film SORE?",
         "options": ["ya Allah, bagus", "BAGUSNYO", "BGUS BANGADH"]
     }
 
-    st.subheader(f"{special_question['question']}")
-    jawaban_special = st.radio("jawabannyh adlh:", special_question["options"], key="special")
+    st.subheader(f"nyoal: {special_question['questions']}")
+    answer = st.radio("jawabannyh adlh:", special_question['options'], key="special_q")
 
-    if st.button("mensubmit jwbn"):
-        st.success("Selamat anda adalah buzzer film SORE 🎬✨")
+    if st.button("mensubmit", key="submit_special"):
+        st.success("Selamat anda adalah buzzer film SORE")
         st.session_state.special_done = True
         st.balloons()
+
 if st.session_state.special_done:
     st.markdown("---")
     st.markdown("### 💌誕生日のメッセージ:")
