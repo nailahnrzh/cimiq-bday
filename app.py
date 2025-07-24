@@ -40,23 +40,26 @@ if st.session_state.quiz_started and not st.session_state.quiz_finished:
     for idx, q in enumerate(questions):
        st.text_input(f"Q{idx+1}: {q['question']}", key=f"q{idx}")
     
+       all_answered = all(
+        st.session_state.get(f"q{idx}") not in [None, ""] for idx in range(len(questions))
+    )
+
     if st.button("mensubmit"):
-      all_answered = all(st.session_state.get(f"q{idx}") not in [None, ""] for idx in range(len(questions)))
-        if not all_answered:
-            st.info("Diisi dulu yh kak")
-        else:
+        if all_answered:
             score = 0
             for idx, q in enumerate(questions):
-                jawaban = st.session_state.get(f"q{idx}", "").strip().lower()
-                if jawaban == q["answer"].lower():
+                if st.session_state.get(f"q{idx}", "").strip() == q['answer']:
                     score += 1
 
             if score == len(questions):
-                st.success("Benul semua! Champions msuk babak brikutnyh")
+                st.success("bnul smwah! champions msup babak brikutnyh")
                 st.session_state.quiz_finished = True
                 st.balloons()
             else:
-                st.warning("Ckckckck. Coba lagi kakak")
+                st.warning("ckckckck. coba lagi kakak")
+        else:
+            st.info("diisi dlu yh kak")
+
 if st.session_state.quiz_finished and not st.session_state.special_done:
     st.markdown("---") 
     st.header("Special Episode")
