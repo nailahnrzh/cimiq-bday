@@ -75,7 +75,7 @@ if st.session_state.quiz_finished and not st.session_state.special_done:
     }
 
     st.subheader(special_question['questions'])
-    answer = st.radio(special_question['options'], key="special_q")
+    answer = st.radio("", special_question['options'], key="special_q")
 
     if st.button("mensubmit", key="submit_special"):
         st.success("Selamat anda adalah buzzer film SORE")
