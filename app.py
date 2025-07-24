@@ -71,20 +71,19 @@ if st.session_state.quiz_finished and not st.session_state.special_done:
         st.balloons()
         st.markdown("---")
         st.markdown("### 💌誕生日のメッセージ:")
+        st.markdown("Happiest birthday, beautiful soul!")
+        st.markdown("You're doing great until today. Love you and always proud of everything you did.")
+        st.markdown("Our mmamah is so lovely ❤️")
 
-st.markdown("Happiest birthday, beautiful soul!")
-st.markdown("You're doing great until today. Love you and always proud of everything you did.")
-st.markdown("Our mmamah is so lovely ❤️")
+        st.markdown("Semoga panjang umur dan sehat selalu ingyh. Semoga dapat cowo smga dpt kerja.")
+        st.markdown("Semoga banyak doa baik yang terkabul. Semua cita-cita tercapai. Jadi orang kaya alhamdulillah masyaAllah aamiin")
 
-st.markdown("Semoga panjang umur dan sehat selalu. Semoga dapat cowo dan kerja, ya Allah. Aamiin.")
-st.markdown("Semoga banyak doa baik yang terkabul. Semua cita-cita tercapai. Jadi orang kaya. Amin!")
+        st.markdown("Selamat memasuki babak baru di usia 23 ini ingyh.")
+        st.markdown("Tentunya banyak tantangan baru, tapi insyaAllah dimudahkan jalannya.")
 
-st.markdown("Selamat memasuki babak baru di usia 23 ini.")
-st.markdown("Tentunya banyak tantangan baru, tapi insyaAllah dimudahkan jalannya.")
+        st.markdown("Jangan capek-capek dulu yaa 🤭 Panjanh perjalanan banh")
+        st.markdown("Bukanka word of affirmation skl maksudku palla pko, tapi semoga mantap.")
 
-st.markdown("Jangan capek-capek dulu yaa 🤭 Panjang perjalananmu!")
-st.markdown("Kami tahu kamu bukan orang yang suka kata-kata, tapi semoga kehangatan kami selalu terasa.")
-
-st.markdown("**WE LOVE ISMI** 💕")
-st.markdown("**MIHU MIHU I LOVE YOU** 🎉🎉")
-st.markdown("**Yeayers hepi 23!!!**")
+        st.markdown("**WE LOVE ISMI** 💕")
+        st.markdown("**MIHU MIHU I LOVE YOU** 🎉🎉")
+        st.markdown("**Yeayers hepi 23!!!**")
