@@ -46,14 +46,22 @@ if st.session_state.quiz_started and not st.session_state.quiz_finished:
                 st.session_state.score += 1
             else:
                 st.error("tet tot salah")
-    all_answered = all(st.session_state.get(f"q{idx}") for idx in range(len(questions)))
-    if all_answered:
-        if st.session_state.score == len(questions):
-            st.success("benul semwa! champions msup babak brikutnyh")
-            st.session_state.quiz_finished = True
-            st.balloons()
-    else:
-        st.warning("ckckckck. coba lagi kakak")
+    all_answered = all(st.session_state.get(f"q{idx}") not in [None, ""] for idx in range(len(questions)))
+    if st.button("mensubmit"):
+        if all_answered:
+            score = 0
+            for idx, q in enumerate(questions):
+                if st.session_state.get(f"q{idx}").strip() == q['answer']:
+                    score += 1
+
+            if score == len(questions):
+                st.success("bnul smwah! champions msup babak brikutnyh")
+                st.session_state.quiz_finished = True
+                st.balloons()
+            else:
+                st.warning("ckckckck. coba lagi kakak")
+        else:
+            st.info("diisi dlu yh kak")
 if st.session_state.quiz_finished and not st.session_state.special_done:
     st.markdown("---") 
     st.header("special episode")
