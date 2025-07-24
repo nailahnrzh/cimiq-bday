@@ -16,8 +16,6 @@ if 'quiz_finished' not in st.session_state:
     st.session_state.quiz_finished = False
 if "special_done" not in st.session_state:
     st.session_state.special_done = False
-if "score" not in st.session_state:
-    st.session_state.score = 0
 guess = st.number_input("Age you are turning in today: ", min_value=1, step=1)
 if st.button("COC SEASON 23 DIMULAI! 🎯") and not st.session_state.found:
     st.session_state.attempts += 1
@@ -32,83 +30,64 @@ if st.button("COC SEASON 23 DIMULAI! 🎯") and not st.session_state.found:
 st.markdown("---")       
 if st.session_state.quiz_started and not st.session_state.quiz_finished:
     st.header("COC Season 23 Deathmatch Quiz")
-    questions =[
-        {
-            "questions": "Jika x + 1/x = 3, maka nilai dari x^2 + 1/x^2 adalah", 
-            "answer": "7"
-        },
-        {
-            "questions": "2, 6, 12, 20, 30, ?",
-            "answer": "42"
-        },
-        {
-            "questions": "A=1 B=2 ... Z= 26 Maka berapa nilai dari kata: ISMI?",
-            "answer": "50"
-        },
-        {
-            "questions": "Digit terakhir dari 7^2025",
-            "answer": "3"
-        }
+    questions = [
+        {"question": "Jika x + 1/x = 3, maka nilai dari x^2 + 1/x^2 adalah", "answer": "7"},
+        {"question": "2, 6, 12, 20, 30, ?", "answer": "42"},
+        {"question": "A=1 B=2 ... Z=26. Maka berapa nilai dari kata: ISMI?", "answer": "50"},
+        {"question": "Digit terakhir dari 7^2025", "answer": "3"}
     ]
-    for idx, (q, a) in enumerate(questions.items()):
-        user_answer = st.text_input(f"Q{idx+1}: {q}", key=f"q{idx}")
-        if user_answer:
-            if user_answer.lower() == a.lower():
-                st.success("benul")
-                st.session_state.score += 1
-            else:
-                st.error("tet tot salah")
-    all_answered = all(st.session_state.get(f"q{idx}") not in [None, ""] for idx in range(len(questions)))
+
+    for idx, q in enumerate(questions):
+       st.text_input(f"Q{idx+1}: {q['question']}", key=f"q{idx}")
+    
     if st.button("mensubmit"):
-        if all_answered:
+      all_answered = all(st.session_state.get(f"q{idx}") not in [None, ""] for idx in range(len(questions)))
+        if not all_answered:
+            st.info("Diisi dulu yh kak")
+        else:
             score = 0
             for idx, q in enumerate(questions):
-                if st.session_state.get(f"q{idx}", "").strip() == q['answer']:
+                jawaban = st.session_state.get(f"q{idx}", "").strip().lower()
+                if jawaban == q["answer"].lower():
                     score += 1
 
             if score == len(questions):
-                st.success("bnul smwah! champions msup babak brikutnyh")
+                st.success("Benul semua! Champions msuk babak brikutnyh")
                 st.session_state.quiz_finished = True
                 st.balloons()
             else:
-                st.warning("ckckckck. coba lagi kakak")
-        else:
-            st.info("diisi dlu yh kak")
+                st.warning("Ckckckck. Coba lagi kakak")
 if st.session_state.quiz_finished and not st.session_state.special_done:
     st.markdown("---") 
-    st.header("special episode")
-    questions = [
-        {
-            "questions": "Bagaimana film SORE?",
-            "options": ["ya Allah, bagus", "BAGUSNYO", "BGUS BANGADH"],
-        },
-    ]   
+    st.header("Special Episode")
+   special_question = {
+        "question": "Bagaimana film SORE?",
+        "options": ["ya Allah, bagus", "BAGUSNYO", "BGUS BANGADH"]
+    }
 
-    user_answer = []
+    st.subheader(f"{special_question['question']}")
+    jawaban_special = st.radio("jawabannyh adlh:", special_question["options"], key="special")
 
-    for idx, q in enumerate(questions):
-        st.subheader(f"nyoal: {q['questions']}")
-        answer = st.radio("jawabannyh adlh:", q['options'], key=f"questions_{1}")
-        user_answer.append(answer)
-       
-    if st.button("mensubmit"):
-        st.success("selamat anda adalah buzzer film SORE")
+    if st.button("mensubmit jwbn"):
+        st.success("Selamat anda adalah buzzer film SORE 🎬✨")
+        st.session_state.special_done = True
         st.balloons()
-        st.markdown("---")
-        st.markdown("### 💌誕生日のメッセージ:")
-        st.markdown("Happiest birthday, beautiful soul!")
-        st.markdown("You're doing great until today. Love you and always proud of everything you did.")
-        st.markdown("Our mmamah is so lovely ❤️")
+if st.session_state.special_done:
+    st.markdown("---")
+    st.markdown("### 💌誕生日のメッセージ:")
+    st.markdown("Happiest birthday, beautiful soul!")
+    st.markdown("You're doing great until today. Love you and always proud of everything you did.")
+    st.markdown("Our mmamah is so lovely ❤️")
 
-        st.markdown("Semoga panjang umur dan sehat selalu ingyh. Semoga dapat cowo smga dpt kerja.")
-        st.markdown("Semoga banyak doa baik yang terkabul. Semua cita-cita tercapai. Jadi orang kaya alhamdulillah masyaAllah aamiin")
+    st.markdown("Semoga panjang umur dan sehat selalu ingyh. Semoga dapat cowo smga dpt kerja.")
+    st.markdown("Semoga banyak doa baik yang terkabul. Semua cita-cita tercapai. Jadi orang kaya alhamdulillah masyaAllah aamiin")
 
-        st.markdown("Selamat memasuki babak baru di usia 23 ini ingyh.")
-        st.markdown("Tentunya banyak tantangan baru, tapi insyaAllah dimudahkan jalannya.")
+    st.markdown("Selamat memasuki babak baru di usia 23 ini ingyh.")
+    st.markdown("Tentunya banyak tantangan baru, tapi insyaAllah dimudahkan jalannya.")
 
-        st.markdown("Jangan capek-capek dulu yaa 🤭 Panjanh perjalanan banh")
-        st.markdown("Bukanka word of affirmation skl maksudku palla pko, tapi semoga mantap.")
+    st.markdown("Jangan capek-capek dulu yaa 🤭 Panjanh perjalanan banh")
+    st.markdown("Bukanka word of affirmation skl maksudku palla pko, tapi semoga mantap.")
 
-        st.markdown("**WE LOVE ISMI** 💕")
-        st.markdown("**MIHU MIHU I LOVE YOU** 🎉🎉")
-        st.markdown("**Yeayers hepi 23!!!**")
+    st.markdown("**WE LOVE ISMI** 💕")
+    st.markdown("**MIHU MIHU I LOVE YOU** 🎉🎉")
+    st.markdown("**Yeayers hepi 23!!!**")
