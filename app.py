@@ -22,16 +22,18 @@ guess = st.number_input("Age you are turning in today: ", min_value=1, step=1)
 
 if not st.session_state.quiz_started and not st.session_state.quiz_finished:
     guess = st.number_input("Age you are turning in today: ", min_value=1, step=1)
+    
     if st.button("COC SEASON 23 DIMULAI! 🎯") and not st.session_state.found:
-    st.session_state.attempts += 1
-    if guess < st.session_state.secret_number:
-        st.warning("Mangsud km su tua")
-    elif guess > st.session_state.secret_number:
-        st.warning("Tabe kak belum")
-    else:
-        st.success(f"Alhamdulillah masyaAllah ismi su {st.session_state.secret_number} tahun. Ngkeh kta lanjut ke babak berikutnyh")
-        st.session_state.found = True
-        st.session_state.quiz_started = True
+        st.session_state.attempts += 1
+        
+        if guess < st.session_state.secret_number:
+            st.warning("Mangsud km su tua")
+        elif guess > st.session_state.secret_number:
+            st.warning("Tabe kak belum")
+        else:
+            st.success(f"Alhamdulillah masyaAllah ismi su {st.session_state.secret_number} tahun. Ngkeh kta lanjut ke babak berikutnyh")
+            st.session_state.found = True
+            st.session_state.quiz_started = True
 
 st.markdown("---")       
 
