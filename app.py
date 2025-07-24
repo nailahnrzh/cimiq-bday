@@ -71,7 +71,7 @@ if st.session_state.quiz_finished and not st.session_state.special_done:
         st.balloons()
         st.markdown("---")
         st.markdown("### 💌誕生日のメッセージ:")
-        st.markdown("""
+
 st.markdown("Happiest birthday, beautiful soul!")
 st.markdown("You're doing great until today. Love you and always proud of everything you did.")
 st.markdown("Our mmamah is so lovely ❤️")
@@ -88,4 +88,3 @@ st.markdown("Kami tahu kamu bukan orang yang suka kata-kata, tapi semoga kehanga
 st.markdown("**WE LOVE ISMI** 💕")
 st.markdown("**MIHU MIHU I LOVE YOU** 🎉🎉")
 st.markdown("**Yeayers hepi 23!!!**")
-""")
