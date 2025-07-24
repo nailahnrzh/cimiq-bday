@@ -51,7 +51,7 @@ if st.session_state.quiz_started and not st.session_state.quiz_finished:
         if all_answered:
             score = 0
             for idx, q in enumerate(questions):
-                if st.session_state.get(f"q{idx}").strip() == q['answer']:
+                if st.session_state.get(f"q{idx}", "").strip() == q['answer']:
                     score += 1
 
             if score == len(questions):
