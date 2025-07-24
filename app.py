@@ -48,7 +48,12 @@ if st.session_state.quiz_started and not st.session_state.quiz_finished:
                 st.error("tet tot salah")
     all_answered = all(st.session_state.get(f"q{idx}") for idx in range(len(questions)))
     if all_answered:
-        st.session_state.quiz_finished = True
+        if st.session_state.score == len(questions):
+            st.success("benul semwa! champions msup babak brikutnyh")
+            st.session_state.quiz_finished = True
+            st.balloons()
+    else:
+        st.warning("ckckckck. coba lagi kakak")
 if st.session_state.quiz_finished and not st.session_state.special_done:
     st.markdown("---") 
     st.header("special episode")
