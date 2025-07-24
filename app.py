@@ -18,8 +18,6 @@ if 'quiz_finished' not in st.session_state:
 if "special_done" not in st.session_state:
     st.session_state.special_done = False
 
-guess = st.number_input("Age you are turning in today: ", min_value=1, step=1)
-
 if not st.session_state.quiz_started and not st.session_state.quiz_finished:
     guess = st.number_input("Age you are turning in today: ", min_value=1, step=1, key="age_guess")
     
