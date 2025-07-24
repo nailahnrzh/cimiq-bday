@@ -41,7 +41,7 @@ if st.session_state.quiz_started and not st.session_state.quiz_finished:
         {"question": "Jika x + 1/x = 3, maka nilai dari x^2 + 1/x^2 adalah", "answer": "7"},
         {"question": "2, 6, 12, 20, 30, ?", "answer": "42"},
         {"question": "A=1 B=2 ... Z=26. Maka berapa nilai dari kata: ISMI?", "answer": "50"},
-        {"question": "Digit terakhir dari 7^2025", "answer": "3"}
+        {"question": "Digit terakhir dari 7^2025", "answer": "7"}
     ]
 
     for idx, q in enumerate(questions):
