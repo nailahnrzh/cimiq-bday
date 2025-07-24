@@ -74,8 +74,8 @@ if st.session_state.quiz_finished and not st.session_state.special_done:
         "options": ["ya Allah, bagus", "BAGUSNYO", "BGUS BANGADH"]
     }
 
-    st.subheader(f"nyoal: {special_question['questions']}")
-    answer = st.radio("jawabannyh adlh:", special_question['options'], key="special_q")
+    st.subheader(special_question['questions'])
+    answer = st.radio(special_question['options'], key="special_q")
 
     if st.button("mensubmit", key="submit_special"):
         st.success("Selamat anda adalah buzzer film SORE")
